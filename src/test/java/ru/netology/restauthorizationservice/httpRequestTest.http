@@ -1,0 +1,25 @@
+#Correct name and password - 200
+GET http://localhost:8080/authorize?user=Tom&password=KillJerry
+Accept: application/json
+
+###
+#correct name and INCORRECT password - 401 (Unknown user)
+GET http://localhost:8080/authorize?user=Tom&password=LoveJerry
+Accept: application/json
+
+###
+#correct name and password - 200
+GET http://localhost:8080/authorize?user=Jerry&password=TomIsBadCat
+Accept: application/json
+
+###
+#checking empty list of authorities - 401 (Unknown user)
+GET http://localhost:8080/authorize?user=Dog&password=ProtectJerry
+Accept: application/json
+
+###
+#checking empty user or password
+GET http://localhost:8080/authorize?user= &password=Nothing
+Accept: application/json
+
+###
